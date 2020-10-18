@@ -6,6 +6,8 @@ const app = express();
 
 const expressLayouts = require("express-ejs-layouts");
 
+const env = require("./config/environment");
+
 const db = require("./config/mongoose");
 
 //used for session cookie
@@ -26,7 +28,7 @@ app.set("layout extractStyles", true);
 app.set("layout extractScripts", true);
 
 //set up path to static files
-app.use(express.static("./assets"));
+app.use(express.static(env.asset_path));
 
 //set up view engine and path to views
 app.set("view engine", "ejs");
@@ -36,7 +38,7 @@ app.set("views", "./views");
 app.use(
   session({
     name: "WorkForce",
-    secret: "A955146152DD8",
+    secret: env.session_cookie_key,
     saveUninitialized: false,
     resave: false,
     cookie: {

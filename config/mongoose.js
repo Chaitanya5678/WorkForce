@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
+const env = require("./environment");
 
-mongoose.connect("mongodb://localhost/workforce", {
+mongoose.connect(`mongodb://localhost/${env.db}`, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useFindAndModify: false,
@@ -13,5 +14,5 @@ db.on("error", console.error.bind(console, "Error in connecting to MongoDB"));
 db.once("open", function () {
   console.log("Connected to Database :: MongoDB");
 });
- 
+
 module.exports = db;

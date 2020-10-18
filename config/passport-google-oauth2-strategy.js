@@ -2,51 +2,46 @@ const passport = require("passport");
 const googleStrategy = require("passport-google-oauth").OAuth2Strategy;
 const crypto = require("crypto");
 const User = require("../models/user");
+const env = require("./environment");
 
 passport.use(
-  new googleStrategy(
-    {
-      clientID:
-        "913250173905-545tpphalpivgp741jrd0f11aa67nsal.apps.googleusercontent.com",
-      clientSecret: "KksZB5UWtLRlF0qX4JgOf3TW",
-      callbackURL: "http://localhost:8000/users/auth/google/callback",
-    },
-    function (accessToken, refreshToken, profile, done) {
-      User.findOne({ email: profile.emails[0].value }).exec(function (
-        err,
-        user
-      ) {
-        if (err) {
-          console.log("Error in Google Strategy Passport", err);
-          return;
-        }
+  new googleStrategy(env.google_oauth, function (
+    accessToken,
+    refreshToken,
+    profile,
+    done
+  ) {
+    User.findOne({ email: profile.emails[0].value }).exec(function (err, user) {
+      if (err) {
+        console.log("Error in Google Strategy Passport", err);
+        return;
+      }
 
-        if (user) {
-          return done(null, user);
-        } else {
-          User.create(
-            {
-              name: profile.displayName,
-              email: profile.emails[0].value,
-              password: crypto.randomBytes(20).toString("hex"),
-            },
+      if (user) {
+        return done(null, user);
+      } else {
+        User.create(
+          {
+            name: profile.displayName,
+            email: profile.emails[0].value,
+            password: crypto.randomBytes(20).toString("hex"),
+          },
 
-            function (err, user) {
-              if (err) {
-                console.log(
-                  "Error in creating account for Google Strategy Passport",
-                  err
-                );
-                return;
-              }
-
-              return done(null, user);
+          function (err, user) {
+            if (err) {
+              console.log(
+                "Error in creating account for Google Strategy Passport",
+                err
+              );
+              return;
             }
-          );
-        }
-      });
-    }
-  )
+
+            return done(null, user);
+          }
+        );
+      }
+    });
+  })
 );
 
 //serializing the user to decide which key to be put into the cookie
