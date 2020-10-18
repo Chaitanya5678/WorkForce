@@ -1,0 +1,109 @@
+<div class="form-container">
+    <h1 id="form-header">Post a Job</h1>
+
+    <form action="/users/create-job" method="POST">
+
+        <table>
+            <tr>
+                <td><label for="role">Job Role</label></td>
+                <td><input type="text" name="role" id="role"></td>
+            </tr>
+            <tr>
+                <td><label for="function">Function</label></td>
+                <td><input type="text" name="function" id="function"></td>
+            </tr>
+            <tr>
+                <td><label for="subFunction">Sub-function</label></td>
+                <td><input type="text" name="subFunction" id="subFunction"></td>
+            </tr>
+            <tr>
+                <td><label for="company">Company</label></td>
+                <td><input type="text" name="company" id="company"></td>
+            </tr>
+            <tr>
+                <td><label for="coreskills">Core Skills:</label></td>
+                <td>
+                    <select id="coreskills" name="coreskills">
+                        <option value="frontend">Front End</option>
+                        <option value="backend">Back End</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <select id="coreskills2" name="coreskills2">
+                        <option value="frontend">Front End</option>
+                        <option value="backend">Back End</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <select id="coreskills3" name="coreskills3">
+                        <option value="frontend">Front End</option>
+                        <option value="backend">Back End</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td><label for="softskills">Soft Skills:</label></td>
+                <td>
+                    <select id="softskills" name="softskills">
+                        <option value="Communication">Communication</option>
+                        <option value="EI">Emotional Intelligence</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <select id="softskills2" name="softskills2">
+                        <option value="Communication">Communication</option>
+                        <option value="EI">Emotional Intelligence</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <select id="softskills3" name="softskills3">
+                        <option value="Communication">Communication</option>
+                        <option value="EI">Emotional Intelligence</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td><label for="location">Location</label></td>
+                <td><input type="text" name="location" id="location"></td>
+            </tr>
+            <tr>
+                <td><label for="pincode">Pin Code</label></td>
+                <td><input type="text" name="pincode" id="pincode"></td>
+            </tr>
+            <tr>
+                <td><label for="compensation">Compensation</label></td>
+                <td><input type="text" name="compensation" id="compensation"></td>
+            </tr>
+            <tr>
+                <td><label for="currency">Currency:</label></td>
+                <td>
+                    <select id="currency" name="currency">
+                        <option value="rupees">Rupees</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td><label for="description">Description</label></td>
+                <td><textarea name="description" id="description" cols="40" rows="5"></textarea></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input type="submit" value="Submit" class="form-submit">
+                </td>
+            </tr>
+
+        </table>
+    </form>
+</div>

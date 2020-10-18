@@ -1,0 +1,19 @@
+.header-container {
+  background-color: whitesmoke;
+  display: flex;
+}
+
+.header-options ul {
+  display: flex;
+}
+
+.header-options li {
+  padding: 10px;
+  list-style: none;
+}
+
+.header-options a,
+.header-logo a {
+  text-decoration: none;
+  font-weight: bold;
+}

@@ -1,0 +1,54 @@
+<link rel="stylesheet" href="/css/header.css">
+
+<div class="header-container">
+
+    <div class="header-logo">
+        <a href="/">
+            <h1>WorkForce</h1>
+        </a>
+    </div>
+
+    <div class="header-options">
+
+        <ul>
+            
+            <% if(locals.user){  %>
+
+            <li>
+                <a href="/">Home</a>
+            </li>
+
+            <li>
+                <a href="/users/post-job">Post a Job</a>
+            </li>
+
+            <li>
+                <a href="/users/apply-job">Apply a Job</a>
+            </li>
+
+            <li>
+                <a href="/users/expert-help">Expert Support</a>
+            </li>
+
+            <li>
+                <a href="/users/profile/<%= user.id %>">My Dashboard</a>
+            </li>
+
+            <li>
+                <a href="/users/sign-out">Sign Out</a>
+            </li>
+
+            <%  }else{ %>
+
+            <li>
+                <a href="/users/auth/google"> Sign Up/In</a>
+            </li>
+
+            <% }  %>
+
+        </ul>
+
+    </div>
+
+
+</div>

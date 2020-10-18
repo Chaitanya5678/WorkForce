@@ -1,0 +1,35 @@
+<link rel="stylesheet" href="/css/styles.css">
+
+<div id="search-container">
+
+    <h1>Search for Jobs</h1>
+
+    <form action="/users/search" method="POST">
+        <input type="text" name="keyskill" placeholder="keyskill">
+        <input type="text" name="location" placeholder="location">
+        <input type="text" name="pincode" placeholder="pincode"> 
+        <input type="submit" value="Submit" class="form-submit">    
+    </form>
+
+</div>
+
+<h1>
+    Job Postings
+</h1>
+
+<div id="home-container">
+
+    <ul >
+
+        <% for(job of jobs){ %>
+
+            <% if(locals.user && locals.user.id != job.user.id) { %> 
+
+                <%- include('_job') %> 
+            
+            <% } %>             
+    
+        <% } %> 
+    </ul>
+
+</div>
